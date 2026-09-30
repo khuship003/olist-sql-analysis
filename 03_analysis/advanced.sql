@@ -138,22 +138,23 @@ WHERE f.rn = 1 AND s.rn = 2;
 
 WITH cat_month AS (
   SELECT COALESCE(t.product_category_name_english, p.product_category_name, 'unknown') AS category,
-         DATE_FORMAT(o.order_purchase_timestamp, '%Y-%m') AS month,
+         DATE_FORMAT(o.order_purchase_timestamp, '%Y-%m') AS ym,
          SUM(oi.price) AS revenue
   FROM order_items oi
   JOIN orders o ON oi.order_id = o.order_id
   JOIN products p ON oi.product_id = p.product_id
   LEFT JOIN category_translation t ON p.product_category_name = t.product_category_name
   WHERE o.order_status = 'delivered'
-  GROUP BY category, month
+    AND o.order_purchase_timestamp >= '2017-01-01'
+    AND o.order_purchase_timestamp <  '2018-09-01'
+  GROUP BY category, ym
 )
-SELECT category, month, ROUND(revenue, 2) AS revenue,
-       ROUND(AVG(revenue) OVER (PARTITION BY category ORDER BY month
+SELECT category, ym AS month, ROUND(revenue, 2) AS revenue,
+       ROUND(AVG(revenue) OVER (PARTITION BY category ORDER BY ym
              ROWS BETWEEN 2 PRECEDING AND CURRENT ROW), 2) AS moving_avg_3m
 FROM cat_month
 WHERE category IN ('health_beauty', 'watches_gifts', 'bed_bath_table')
-  AND month BETWEEN '2017-01' AND '2018-08'
-ORDER BY category, month;
+ORDER BY category, ym;
 
 SELECT s.seller_state, c.customer_state,
        COUNT(*) AS orders,
