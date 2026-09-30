@@ -28,23 +28,35 @@ MySQL 8.0, MySQL Workbench, Excel (charts)
    ![Top categories](images/top_categories.png)
 3. **Geography:** SP alone is ~38% of revenue; SP, RJ, MG together ~63%.
    ![Revenue by state](images/revenue_by_state.png)
-4. **Delivery:** X% of orders arrive late; late orders average a review score of X vs Y on time.
+4. **Delivery:** about 8% of delivered orders arrive after the estimated date. Late orders
+   average a review score of **2.57 vs 4.29** for on-time orders, a drop of 1.72 points.
+   Delivery reliability is the clearest driver of customer satisfaction.
    ![Late vs reviews](images/late_vs_review_score.png)
-5. **Sellers:** the top 10% of sellers generate X% of revenue.
+5. **Sellers:** revenue is highly concentrated. The top 10% of sellers (297 sellers) generate
+   **67.1%** of revenue, and the top 20% generate **82.3%**.
    ![Seller Pareto](images/seller_pareto.png)
-6. **Retention:** only X% of customers buy again; monthly cohort retention is ~0.3-0.6%.
+6. **Retention:** only **3.0%** of customers (2,801 of 93,358) placed a second order. Monthly
+   cohort retention is below 1% in every cohort, so growth comes almost entirely from new customers.
    ![Cohort retention](images/cohort_retention.png)
-7. **RFM:** [one line about the largest segment and revenue share].
+7. **RFM segments:** customers with high spend (recent and lapsed big spenders) are 38% of
+   customers but **71% of revenue**, and average about R$267 each against R$55 for other
+   customers. "Lapsed big spenders" alone (20,755 customers) account for **42% of revenue**.
+   Only 2,801 customers are repeat buyers (Champions plus Loyal/At risk).
    ![RFM](images/rfm_segments.png)
 
 ## Recommendations
-- Improve delivery reliability (SLA monitoring for slow seller-state routes)
-- Launch post-purchase retention campaigns, since repeat rate is very low
-- Plan inventory and seller capacity ahead of November
+- **Fix delivery reliability:** late orders lose 1.7 review points, so monitor seller SLAs and
+  set more realistic delivery estimates on slow seller-state routes
+- **Win back high-value one-time buyers:** 20,755 lapsed big spenders represent 42% of revenue;
+  a post-purchase email or voucher sequence targets the biggest pool
+- **Reduce seller dependence:** the top 10% of sellers drive 67% of revenue, so protect them
+  and recruit sellers in the top categories
+- Plan inventory and seller capacity ahead of November (Black Friday peak)
 - Reduce dependence on the southeast via seller recruitment in other regions
 
 ## Caveats
 Revenue = item price excluding freight, delivered orders only. Aug-Oct 2018 data is incomplete.
+RFM "lapsed" is relative to the dataset's time window, and segments are based on recency and spend quintiles.
 
 ## How to reproduce
 1. Download the dataset from Kaggle
