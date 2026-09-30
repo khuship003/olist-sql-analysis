@@ -28,9 +28,10 @@ MySQL 8.0, MySQL Workbench, Excel (charts)
    ![Top categories](images/top_categories.png)
 3. **Geography:** SP alone is ~38% of revenue; SP, RJ, MG together ~63%.
    ![Revenue by state](images/revenue_by_state.png)
-4. **Delivery:** about 8% of delivered orders arrive after the estimated date. Late orders
-   average a review score of **2.57 vs 4.29** for on-time orders, a drop of 1.72 points.
-   Delivery reliability is the clearest driver of customer satisfaction.
+4. **Delivery:** **8.11%** of delivered orders (7,826 of 96,470) arrive after the estimated date.
+   Orders take 12.5 days on average against an estimate of 24.4 days, so Olist pads its estimates
+   heavily, yet the orders that still miss them score far lower: a review score of **2.57 vs 4.29**
+   for on-time orders, a drop of 1.72 points.
    ![Late vs reviews](images/late_vs_review_score.png)
 5. **Sellers:** revenue is highly concentrated. The top 10% of sellers (297 sellers) generate
    **67.1%** of revenue, and the top 20% generate **82.3%**.
@@ -45,8 +46,9 @@ MySQL 8.0, MySQL Workbench, Excel (charts)
    ![RFM](images/rfm_segments.png)
 
 ## Recommendations
-- **Fix delivery reliability:** late orders lose 1.7 review points, so monitor seller SLAs and
-  set more realistic delivery estimates on slow seller-state routes
+- **Fix delivery reliability:** late orders lose 1.7 review points. Estimates are already
+  conservative (24.4 days vs 12.5 actual), so the focus should be on the 8% of orders that miss
+  them: monitor seller SLAs and investigate slow seller-state routes (Q20).
 - **Win back high-value one-time buyers:** 20,755 lapsed big spenders represent 42% of revenue;
   a post-purchase email or voucher sequence targets the biggest pool
 - **Reduce seller dependence:** the top 10% of sellers drive 67% of revenue, so protect them
